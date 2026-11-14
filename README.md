@@ -10,8 +10,7 @@ directory argument**, same shape as `phh-ls`/`ohh-ls`, and loads
 `openppl/registry/symbols.json`. That registry didn't exist at first:
 the OpenPPL manual is GPLv3, and the project owner initially chose to
 build the grammar and this server *without* any registry rather than
-resolve that licensing question
-. The question is now
+resolve that licensing question first. The question is now
 resolved, the project is going open source, and the registry was built
 in a "restate independently" posture (every `meaning` composed fresh
 from the symbol's name, not copied from the manual, see
@@ -21,10 +20,15 @@ use it.
 ## Build
 
 ```sh
-cd openppl-ls
-mkdir -p build && cd build
-cmake .. && make
+cmake -S . -B build
+cmake --build build -j4
 ```
+
+Works the same way on macOS, Linux and Windows: the only prerequisites
+are a C/C++ compiler and CMake 3.16+, same as `phh-ls`'s own README
+explains in full, tree-sitter (the runtime library) and yyjson are
+fetched and built from source via CMake's `FetchContent`, not found
+through a system package manager.
 
 Produces `openppl-ls` and `openppl-check` (a standalone CLI, mirrors
 `phh-check`/`ohh-check`). Both build against `../tree-sitter-openppl`'s
@@ -143,8 +147,7 @@ openppl-check <registry-dir> <file.ohf> [...]    # standalone CLI
   pages only, not the separate native-OpenHoldem-engine-symbol manual
   (never fetched in this project), the all-lowercase exemption reduces
   but doesn't eliminate false negatives/positives either way, and there
-  is no second implementation to cross-check against at all
-  .
+  is no second implementation to cross-check against at all.
 - **The one-level-only open-ended-`WHEN` nesting limit is still not
   checked.** The grammar's document root is flat by design, so there is
   no surviving tree structure to check nesting depth against.

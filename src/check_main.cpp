@@ -4,8 +4,7 @@
 //   openppl-check <registry-dir> <file.ohf> [more files...]
 //
 // Now takes a registry directory argument, same shape as
-// phh-check/ohh-check, this server's first release didn't
-// .
+// phh-check/ohh-check, this server's first release didn't take one.
 
 #include "document.h"
 #include "registry.h"
