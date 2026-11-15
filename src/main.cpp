@@ -1,7 +1,7 @@
 // openppl-ls: a standard-LSP-only server for OpenPPL (.ohf), over stdio.
 // Mirrors phh-ls/ohh-ls's shape. This is this server's SECOND release;
 // its first shipped with no registry at all. It now loads
-// openppl/registry/symbols.json, same shape as phh-ls/ohh-ls's registry
+// openppl-data/registry/symbols.json, same shape as phh-ls/ohh-ls's registry
 // argument. Hover/completion still fall back to the old shape/naming-
 // convention-based behavior for anything the registry doesn't cover
 // (native OpenHoldem engine symbols this registry never scraped, etc.);
@@ -156,11 +156,11 @@ std::string describe_identifier(const std::string &name) {
     return !std::isalpha(c) || std::islower(c);
   });
   if (all_lower) {
-    return "Not in openppl/registry/symbols.json, but all-lowercase, per the confirmed "
+    return "Not in openppl-data/registry/symbols.json, but all-lowercase, per the confirmed "
            "convention (differences to shanky.html), likely a native OpenHoldem engine symbol "
            "this registry doesn't cover (it only scrapes OpenPPL's own symbol-library pages).";
   }
-  return "Not in openppl/registry/symbols.json. Could be a real OpenPPL symbol this registry "
+  return "Not in openppl-data/registry/symbols.json. Could be a real OpenPPL symbol this registry "
          "missed, or a typo, there is no second implementation to cross-check against "
          ".";
 }
@@ -478,7 +478,7 @@ private:
           text = "**" + name + "** (" + sym->type + ")\n\n" + sym->meaning +
                  (sym->low_confidence
                       ? "\n\n*Lower confidence: this symbol's exact behavior wasn't fully "
-                        "certain from its name alone, see openppl/registry/README.md.*"
+                        "certain from its name alone, see openppl-data/registry/README.md.*"
                       : "");
         } else {
           text = "**" + name + "**\n\n" + describe_identifier(name);
@@ -499,7 +499,7 @@ private:
   }
 
   void on_completion(yyjson_val *id, yyjson_val * /*params*/) {
-    // Now backed by the real registry (openppl/registry/symbols.json),
+    // Now backed by the real registry (openppl-data/registry/symbols.json),
     // unlike this server's first release, plus the small, fixed
     // keyword/reserved-section/action sets, which were never
     // registry-dependent in the first place.

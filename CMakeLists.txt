@@ -37,7 +37,7 @@ target_include_directories(openppl_grammar PUBLIC
   ${TREE_SITTER_OPENPPL_DIR}/src
 )
 
-# Registry argument now exists (openppl/registry/symbols.json), unlike
+# Registry argument now exists (openppl-data/registry/symbols.json), unlike
 # this server's first release, it now takes one, same shape as phh-ls/ohh-ls.
 add_executable(openppl-ls
   src/registry.cpp

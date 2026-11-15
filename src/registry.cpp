@@ -32,7 +32,7 @@ void load_direct_entry(yyjson_val *entry, Registry &reg) {
 }
 
 // Expands a "name_template"/"n_range" or "name_template"/"values" entry
-// (openppl/registry/symbols.json's Technical category) into one
+// (openppl-data/registry/symbols.json's Technical category) into one
 // concrete SymbolInfo per real symbol name.
 void load_templated_entry(yyjson_val *entry, Registry &reg) {
   std::string tmpl = str_or_empty(yyjson_obj_get(entry, "name_template"));

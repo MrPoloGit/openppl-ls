@@ -7,14 +7,14 @@ architectural role `phh-ls`/`ohh-ls` play for their languages.
 
 Unlike this server's **first** release, it now takes a **registry
 directory argument**, same shape as `phh-ls`/`ohh-ls`, and loads
-`openppl/registry/symbols.json`. That registry didn't exist at first:
+`openppl-data/registry/symbols.json`. That registry didn't exist at first:
 the OpenPPL manual is GPLv3, and the project owner initially chose to
 build the grammar and this server *without* any registry rather than
 resolve that licensing question first. The question is now
 resolved, the project is going open source, and the registry was built
 in a "restate independently" posture (every `meaning` composed fresh
 from the symbol's name, not copied from the manual, see
-`openppl/registry/README.md`), and this server was updated to actually
+`openppl-data/registry/README.md`), and this server was updated to actually
 use it.
 
 ## Build
@@ -49,7 +49,7 @@ openppl-check <registry-dir> <file.ohf> [...]    # standalone CLI
   (name + whether its body looks like hand-notation entries or
   `WHEN`-rules).
 - **Registry loading** (`src/registry.{h,cpp}`): loads
-  `openppl/registry/symbols.json`, expanding its two parametric
+  `openppl-data/registry/symbols.json`, expanding its two parametric
   categories (`Technical`'s numbered-range templates, `PokerTracker`'s
   base-stat × postfix product) into concrete, case-sensitive-keyed
   entries at startup. Also carries two small, closed, hand-confirmed
@@ -103,7 +103,7 @@ openppl-check <registry-dir> <file.ohf> [...]    # standalone CLI
 
 ## How this was verified
 
-- **`openppl-check` against the full corpus** (`openppl/corpus/`)
+- **`openppl-check` against the full corpus** (`openppl-data/corpus/`)
   reproduces zero diagnostics on every `valid/` fixture and the expected
   diagnostics on each `invalid/` fixture, including a new one built
   specifically for the registry-backed checks

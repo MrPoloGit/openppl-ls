@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 
-// Loads openppl/registry/symbols.json plus two small, closed,
+// Loads openppl-data/registry/symbols.json plus two small, closed,
 // hardcoded tables that were never scraped from any manual table and
 // therefore never needed the licensing-posture treatment symbols.json
 // did: the confirmed action list (Actions.html) and the three confirmed

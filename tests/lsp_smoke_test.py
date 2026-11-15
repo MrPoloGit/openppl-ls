@@ -3,7 +3,7 @@
 
 Mirrors phh-ls/ohh-ls's lsp_smoke_test.py shape, now including a registry
 directory argument; this server's first release took none, but now
-loads openppl/registry/symbols.json.
+loads openppl-data/registry/symbols.json.
 
 Usage: python3 openppl-ls/tests/lsp_smoke_test.py <path-to-openppl-ls-binary> <registry-dir> <corpus-dir>
 """
